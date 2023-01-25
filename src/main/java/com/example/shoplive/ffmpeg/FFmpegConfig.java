@@ -15,13 +15,11 @@ public class FFmpegConfig {
 
     @Bean
     public FFmpeg ffmpeg() throws IOException {
-//        return new FFmpeg("PATH_Programs/ffmpeg.exe");
         return new FFmpeg("\"C:\\PATH_Programs\\ffmpeg\"");
     }
 
     @Bean
     public FFprobe ffprobe() throws IOException {
-//        return new FFprobe("PATH_Programs/ffprobe.exe");
         return new FFprobe("\"C:\\PATH_Programs\\ffprobe\"");
     }
 
