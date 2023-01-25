@@ -84,7 +84,7 @@ public class FileService {
         FileInfo savedFileInfo = fileInfoService.save(fileInfo);
 
         // FIXME
-        // Thumbnail순서 보장 어떻게?
+        // Thumbnail순서 보장 어떻게? 비동기 처리 안하는게 맞나?
         logger.info("before getThumbnail() called");
         fIleConversionAsyncService.getThumbnail(uploadedFilePath, savedFileInfo);
         logger.info("before getThumbnail() called");
