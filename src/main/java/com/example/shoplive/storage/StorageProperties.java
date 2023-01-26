@@ -8,7 +8,7 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "C:/shoplive_resource/upload";
+    private String location = "/opt/shoplive/shoplive_resource/upload";
 
     public String getLocation() {
         return location;

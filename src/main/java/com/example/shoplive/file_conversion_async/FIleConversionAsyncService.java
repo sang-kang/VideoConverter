@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class FIleConversionAsyncService {
 
-    private static final String RESIZED_PATH = "http://localhost:8080/path/to/resized/";
-    private static final String THUMBNAIL_PATH = "http://localhost:8080/path/to/thumbnail/";
+    private static final String RESIZED_PATH = "http://localhost:8080/resized/";
+    private static final String THUMBNAIL_PATH = "http://localhost:8080/thumbnail/";
     private static final Logger logger = LoggerFactory.getLogger(FIleConversionAsyncService.class);
     private final FFmpegUtil fFmpegUtil;
     private final FileInfoService fileInfoService;
@@ -46,6 +46,8 @@ public class FIleConversionAsyncService {
 
     @Async
     public void getThumbnail(String uploadedFilePath, FileInfo savedFileInfo) {
+        FFmpegProbeResult thumbnail = fFmpegUtil.getThumbnail(uploadedFilePath);
+
         String[] splitBySlash = uploadedFilePath.split("/");
         String afterLastSlash = splitBySlash[splitBySlash.length - 1];
         String name = afterLastSlash.substring(0, afterLastSlash.indexOf("."));

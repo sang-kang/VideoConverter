@@ -35,7 +35,6 @@ public class FileInfo {
 
     private String thumbnailImageUrl;
 
-    // FIXME: Date type 바꾸기
     @CreationTimestamp
     private OffsetDateTime createdAt;
 }

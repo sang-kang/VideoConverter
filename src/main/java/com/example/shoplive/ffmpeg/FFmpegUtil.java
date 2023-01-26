@@ -17,8 +17,8 @@ import java.io.IOException;
 @Component
 public class FFmpegUtil {
     private static final Logger logger = LoggerFactory.getLogger(FFmpegUtil.class);
-    private static final String RESIZED_OUTPUT_PATH = "C:/shoplive_resource/resized/";
-    private static final String THUMBNAIL_OUTPUT_PATH = "C:/shoplive_resource/thumbnail/";
+    private static final String RESIZED_OUTPUT_PATH = "/opt/shoplive/shoplive_resource/resized/";
+    private static final String THUMBNAIL_OUTPUT_PATH = "/opt/shoplive/shoplive_resource/thumbnail/";
     private final FFmpeg ffMpeg;
     private final FFprobe ffProbe;
 
@@ -75,7 +75,6 @@ public class FFmpegUtil {
         String name = afterLastSlash.substring(0, afterLastSlash.indexOf("."));
         String format = ".png";
 
-        // FIXME: 에러나는지 볼 것. setFormat("png") 추가하면 에러남.
         FFmpegBuilder builder = new FFmpegBuilder()
                 .overrideOutputFiles(true)
                 .setInput(uploadedFilePath)

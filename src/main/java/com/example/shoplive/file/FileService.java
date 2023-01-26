@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileService {
-    private static final String UPLOAD_PATH = "http://localhost:8080/path/to/upload/";
+    private static final String UPLOAD_PATH = "http://localhost:8080/upload/";
     private static final Logger logger = LoggerFactory.getLogger(FileService.class);
     private final StorageService storageService;
     private final StorageProperties storageProperties;
@@ -62,8 +62,6 @@ public class FileService {
         fileInfoResponseDto.setOriginal(originalDto);
         fileInfoResponseDto.setResized(resizedDto);
         fileInfoResponseDto.setThumbnail(thumbnailDto);
-        // FIXME
-        // Date타입 바꿔야할듯. 문제에 있는 리턴과 모양이 다르다.
         fileInfoResponseDto.setCreatedAt(fileInfo.getCreatedAt());
 
         return fileInfoResponseDto;
@@ -83,8 +81,6 @@ public class FileService {
         fileInfo.setOriginalVideoUrl(UPLOAD_PATH + file.getOriginalFilename());
         FileInfo savedFileInfo = fileInfoService.save(fileInfo);
 
-        // FIXME
-        // Thumbnail순서 보장 어떻게? 비동기 처리 안하는게 맞나?
         logger.info("before getThumbnail() called");
         fIleConversionAsyncService.getThumbnail(uploadedFilePath, savedFileInfo);
         logger.info("before getThumbnail() called");

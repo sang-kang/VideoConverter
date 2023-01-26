@@ -15,12 +15,12 @@ public class FFmpegConfig {
 
     @Bean
     public FFmpeg ffmpeg() throws IOException {
-        return new FFmpeg("\"C:\\PATH_Programs\\ffmpeg\"");
+        return new FFmpeg("/opt/shoplive/ffmpeg-5.1.1-amd64-static/ffmpeg");
     }
 
     @Bean
     public FFprobe ffprobe() throws IOException {
-        return new FFprobe("\"C:\\PATH_Programs\\ffprobe\"");
+        return new FFprobe("/opt/shoplive/ffmpeg-5.1.1-amd64-static/ffprobe");
     }
 
 }

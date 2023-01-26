@@ -14,16 +14,13 @@ import java.nio.file.Path;
 @EnableWebMvc
 public class StaticResourceConfig implements WebMvcConfigurer {
     private static final Logger logger = LoggerFactory.getLogger(StaticResourceConfig.class);
-    private static final String ROOT = "/path/to/**";
-    private static final URI LOCATION = Path.of("c:", "shoplive_resource").toUri();
+    private static final String ROOT = "/**";
+    private static final URI LOCATION = Path.of("/opt/shoplive/shoplive_resource").toUri();
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // FIXME: 운영체제 별
         registry
                 .addResourceHandler(ROOT)
-                // unix? setting
-                //.addResourceLocations("file:/opt/files/")
                 .addResourceLocations(LOCATION.toString())
                 .resourceChain(true)
                 .addResolver(new Utf8DecodeResolver());
